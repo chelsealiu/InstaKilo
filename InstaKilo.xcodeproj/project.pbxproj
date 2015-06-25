@@ -14,6 +14,17 @@
 		5ECD88EA1B3C35C200DA1527 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD88E91B3C35C200DA1527 /* Images.xcassets */; };
 		5ECD88ED1B3C35C200DA1527 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD88EB1B3C35C200DA1527 /* LaunchScreen.xib */; };
 		5ECD88F91B3C35C200DA1527 /* InstaKiloTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD88F81B3C35C200DA1527 /* InstaKiloTests.m */; };
+		5ECD89041B3C426500DA1527 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5ECD89031B3C426500DA1527 /* CollectionViewCell.m */; };
+		5ECD890C1B3C4D6800DA1527 /* toronto.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89061B3C4D6800DA1527 /* toronto.png */; };
+		5ECD890D1B3C4D6800DA1527 /* newyork.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89071B3C4D6800DA1527 /* newyork.png */; };
+		5ECD890E1B3C4D6800DA1527 /* shanghai.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89081B3C4D6800DA1527 /* shanghai.png */; };
+		5ECD890F1B3C4D6800DA1527 /* tokyo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89091B3C4D6800DA1527 /* tokyo.png */; };
+		5ECD89101B3C4D6800DA1527 /* vancouver.png in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD890A1B3C4D6800DA1527 /* vancouver.png */; };
+		5ECD89151B3C521A00DA1527 /* alaska.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89111B3C521A00DA1527 /* alaska.jpg */; };
+		5ECD89161B3C521A00DA1527 /* venice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89121B3C521A00DA1527 /* venice.jpg */; };
+		5ECD89171B3C521A00DA1527 /* london.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89131B3C521A00DA1527 /* london.jpg */; };
+		5ECD89181B3C521A00DA1527 /* paris.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89141B3C521A00DA1527 /* paris.jpg */; };
+		5ECD891A1B3C525100DA1527 /* rio.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ECD89191B3C525100DA1527 /* rio.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +51,18 @@
 		5ECD88F21B3C35C200DA1527 /* InstaKiloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstaKiloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ECD88F71B3C35C200DA1527 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ECD88F81B3C35C200DA1527 /* InstaKiloTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstaKiloTests.m; sourceTree = "<group>"; };
+		5ECD89021B3C426500DA1527 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		5ECD89031B3C426500DA1527 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		5ECD89061B3C4D6800DA1527 /* toronto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toronto.png; sourceTree = "<group>"; };
+		5ECD89071B3C4D6800DA1527 /* newyork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newyork.png; sourceTree = "<group>"; };
+		5ECD89081B3C4D6800DA1527 /* shanghai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shanghai.png; sourceTree = "<group>"; };
+		5ECD89091B3C4D6800DA1527 /* tokyo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tokyo.png; sourceTree = "<group>"; };
+		5ECD890A1B3C4D6800DA1527 /* vancouver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vancouver.png; sourceTree = "<group>"; };
+		5ECD89111B3C521A00DA1527 /* alaska.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = alaska.jpg; sourceTree = "<group>"; };
+		5ECD89121B3C521A00DA1527 /* venice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = venice.jpg; sourceTree = "<group>"; };
+		5ECD89131B3C521A00DA1527 /* london.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = london.jpg; sourceTree = "<group>"; };
+		5ECD89141B3C521A00DA1527 /* paris.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paris.jpg; sourceTree = "<group>"; };
+		5ECD89191B3C525100DA1527 /* rio.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rio.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +108,20 @@
 				5ECD88E11B3C35C200DA1527 /* AppDelegate.m */,
 				5ECD88E31B3C35C200DA1527 /* ViewController.h */,
 				5ECD88E41B3C35C200DA1527 /* ViewController.m */,
+				5ECD89021B3C426500DA1527 /* CollectionViewCell.h */,
+				5ECD89031B3C426500DA1527 /* CollectionViewCell.m */,
 				5ECD88E61B3C35C200DA1527 /* Main.storyboard */,
 				5ECD88E91B3C35C200DA1527 /* Images.xcassets */,
+				5ECD89061B3C4D6800DA1527 /* toronto.png */,
+				5ECD89071B3C4D6800DA1527 /* newyork.png */,
+				5ECD89081B3C4D6800DA1527 /* shanghai.png */,
+				5ECD89091B3C4D6800DA1527 /* tokyo.png */,
+				5ECD890A1B3C4D6800DA1527 /* vancouver.png */,
+				5ECD89111B3C521A00DA1527 /* alaska.jpg */,
+				5ECD89121B3C521A00DA1527 /* venice.jpg */,
+				5ECD89131B3C521A00DA1527 /* london.jpg */,
+				5ECD89141B3C521A00DA1527 /* paris.jpg */,
+				5ECD89191B3C525100DA1527 /* rio.jpg */,
 				5ECD88EB1B3C35C200DA1527 /* LaunchScreen.xib */,
 				5ECD88DC1B3C35C200DA1527 /* Supporting Files */,
 			);
@@ -199,9 +234,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ECD89101B3C4D6800DA1527 /* vancouver.png in Resources */,
+				5ECD890E1B3C4D6800DA1527 /* shanghai.png in Resources */,
+				5ECD891A1B3C525100DA1527 /* rio.jpg in Resources */,
 				5ECD88E81B3C35C200DA1527 /* Main.storyboard in Resources */,
+				5ECD89161B3C521A00DA1527 /* venice.jpg in Resources */,
+				5ECD890F1B3C4D6800DA1527 /* tokyo.png in Resources */,
+				5ECD89151B3C521A00DA1527 /* alaska.jpg in Resources */,
 				5ECD88ED1B3C35C200DA1527 /* LaunchScreen.xib in Resources */,
+				5ECD890C1B3C4D6800DA1527 /* toronto.png in Resources */,
 				5ECD88EA1B3C35C200DA1527 /* Images.xcassets in Resources */,
+				5ECD89171B3C521A00DA1527 /* london.jpg in Resources */,
+				5ECD890D1B3C4D6800DA1527 /* newyork.png in Resources */,
+				5ECD89181B3C521A00DA1527 /* paris.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +266,7 @@
 			files = (
 				5ECD88E51B3C35C200DA1527 /* ViewController.m in Sources */,
 				5ECD88E21B3C35C200DA1527 /* AppDelegate.m in Sources */,
+				5ECD89041B3C426500DA1527 /* CollectionViewCell.m in Sources */,
 				5ECD88DF1B3C35C200DA1527 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

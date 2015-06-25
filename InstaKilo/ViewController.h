@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionViewCell.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+
+
+@property (strong, nonatomic) CollectionViewCell *myCell;
+@property (retain, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic, strong) NSMutableArray *imagesArray;
 
 
 @end
