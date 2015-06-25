@@ -31,7 +31,7 @@
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
-    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
+    [self.collectionView setBackgroundColor:[UIColor darkGrayColor]];
     [self.view addSubview:self.collectionView];
     
     
@@ -156,26 +156,27 @@
 {
 
     UICollectionReusableView *sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+    
     UILabel *headerLabel1 = [[UILabel alloc] init];
     UILabel *headerLabel2 = [[UILabel alloc] init];
     
     headerLabel1=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 45)];
-    headerLabel1.textColor = [UIColor whiteColor];
+    headerLabel1.textColor = [UIColor colorWithRed:206.0/255 green:248.0/255 blue:249.0/255 alpha:1.0];
     headerLabel1.backgroundColor = [UIColor darkGrayColor];
     
     headerLabel2=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 45)];
-    headerLabel2.textColor = [UIColor whiteColor];
+    headerLabel2.textColor = [UIColor colorWithRed:206.0/255 green:248.0/255 blue:249.0/255 alpha:1.0];
     headerLabel2.backgroundColor = [UIColor darkGrayColor];
 
     if ([self.sortKey isEqualToString: @"Location"]) {
         
         if (indexPath.section == 0) {
-            NSString *title1 = @"Canada";
+            NSString *title1 = @" Canada";
             headerLabel1.text=title1;
             [sectionHeader addSubview:headerLabel1];
             
         } else if (indexPath.section == 1) {
-            NSString *title2 = @"Foreign";
+            NSString *title2 = @" Foreign";
             headerLabel2.text=title2;
             [sectionHeader addSubview:headerLabel2];
         }
@@ -183,12 +184,12 @@
     } else if ([self.sortKey isEqualToString:@"Subject"]) {
 
         if (indexPath.section == 0) {
-            NSString *title1 = @"City";
+            NSString *title1 = @" City";
             headerLabel1.text=title1;
             [sectionHeader addSubview:headerLabel1];
             
         } else if (indexPath.section == 1) {
-            NSString *title2 = @"Other";
+            NSString *title2 = @" Other";
             headerLabel2.text=title2;
             [sectionHeader addSubview:headerLabel2];
             
@@ -207,12 +208,20 @@
     
     UIImageView* tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, myCell.frame.size.width, myCell.frame.size.height)];
     
+    
+    CALayer *borderLayer = [CALayer layer];
+    CGRect borderFrame = CGRectMake(0, 0, (tempImageView.frame.size.width), (tempImageView.frame.size.height));
+    [borderLayer setBackgroundColor:[[UIColor clearColor] CGColor]];
+    [borderLayer setFrame:borderFrame];
+    [borderLayer setBorderWidth:1.0];
+    [borderLayer setBorderColor:[[UIColor colorWithRed:206.0/255 green:248.0/255 blue:249.0/255 alpha:1.0] CGColor]];
+    [tempImageView.layer addSublayer:borderLayer];
+  
     Photo *tempPhoto = [[Photo alloc] init];
 
     if (indexPath.section == 0) {
         tempPhoto = self.tempArray1[indexPath.row];
         tempImageView.image = [UIImage imageNamed:tempPhoto.imageName];
-//        NSLog(@"%@", self.tempArray1);
         [myCell.contentView addSubview: tempImageView];
 
         return myCell;
@@ -253,7 +262,7 @@
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 
 {
-    return 1;
+    return 4;
 }
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section

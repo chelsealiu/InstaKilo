@@ -89,7 +89,7 @@
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="IXI-hU-JI0">
                             <rect key="frame" x="93.5" y="7.5" width="133" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.80784313725490198" green="0.97254901960784312" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="LyG-NE-f0A"/>
                                 <constraint firstAttribute="width" constant="133" id="QtC-5E-FcV"/>
@@ -98,7 +98,7 @@
                                 <segment title="Subject"/>
                                 <segment title="Location"/>
                             </segments>
-                            <color key="tintColor" red="0.0019136679292929282" green="0.0017423752443355323" blue="0.0017781434628657904" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="sortType:" destination="vXZ-lx-hvc" eventType="valueChanged" id="y1T-3O-H7v"/>
                             </connections>
