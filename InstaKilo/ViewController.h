@@ -8,18 +8,31 @@
 
 #import <UIKit/UIKit.h>
 #import "CollectionViewCell.h"
+#import "Photo.h"
 
 @interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 
-@property (strong, nonatomic) CollectionViewCell *myCell;
 @property (retain, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (nonatomic, strong) NSMutableArray *imagesArray;
+@property (nonatomic, strong) NSArray *imagesArray;
 
-@property (retain, nonatomic) UICollectionReusableView *sectionHeader;
+@property (nonatomic, strong) NSArray *tempArray1;
+@property (nonatomic, strong) NSArray *tempArray2;
 
-@property (retain, nonatomic) UILabel *headerLabel;
+@property (strong, nonatomic) Photo *photo1;
+@property (strong, nonatomic) Photo *photo2;
+@property (strong, nonatomic) Photo *photo3;
+@property (strong, nonatomic) Photo *photo4;
+@property (strong, nonatomic) Photo *photo5;
+@property (strong, nonatomic) Photo *photo6;
+@property (strong, nonatomic) Photo *photo7;
+@property (strong, nonatomic) Photo *photo8;
+@property (strong, nonatomic) Photo *photo9;
+@property (strong, nonatomic) Photo *photo10;
+
+
+@property (strong, nonatomic) NSString* sortKey; 
 
 @end
 

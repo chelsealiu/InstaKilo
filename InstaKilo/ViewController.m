@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "CollectionViewCell.h"
-
+#import "Photo.h"
 
 @interface ViewController ()
 
@@ -26,6 +26,7 @@
     //initialize UICollectionView
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.sectionInset = UIEdgeInsetsMake(20, 0, 0, 0);
+    
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout: layout];
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
@@ -33,88 +34,202 @@
     [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:self.collectionView];
     
-    NSArray *tempArray = @[@"toronto.png",@"vancouver.png",@"newyork.png",@"shanghai.png",@"tokyo.png",@"alaska.jpg", @"venice.jpg",@"london.jpg",@"paris.jpg",@"rio.jpg"];
-    self.imagesArray = [[NSMutableArray alloc] initWithArray:tempArray];
+    
+    self.photo1 = [[Photo alloc] init];
+    self.photo1.imageName = @"toronto.png";
+    self.photo1.imageLocation = @"Canada";
+    self.photo1.imageSubject = @"City";
+    
+    self.photo2 = [[Photo alloc] init];
+    self.photo2.imageName = @"vancouver.png";
+    self.photo2.imageLocation = @"Canada";
+    self.photo2.imageSubject = @"City";
+    
+    self.photo3 = [[Photo alloc] init];
+    self.photo3.imageName = @"newyork.png";
+    self.photo3.imageLocation = @"Foreign";
+    self.photo3.imageSubject = @"City";
+    
+    self.photo4 = [[Photo alloc] init];
+    self.photo4.imageName = @"shanghai.png";
+    self.photo4.imageLocation = @"Foreign";
+    self.photo4.imageSubject = @"City";
+    
+    self.photo5 = [[Photo alloc] init];
+    self.photo5.imageName = @"tokyo.png";
+    self.photo5.imageLocation = @"Foreign";
+    self.photo5.imageSubject = @"City";
+    
+    self.photo6 = [[Photo alloc] init];
+    self.photo6.imageName = @"alaska.jpg";
+    self.photo6.imageLocation = @"Foreign";
+    self.photo6.imageSubject = @"Other";
+    
+    self.photo7 = [[Photo alloc] init];
+    self.photo7.imageName = @"venice.jpg";
+    self.photo7.imageLocation = @"Foreign";
+    self.photo7.imageSubject = @"Other";
+    
+    self.photo8 = [[Photo alloc] init];
+    self.photo8.imageName = @"london.jpg";
+    self.photo8.imageLocation = @"Foreign";
+    self.photo8.imageSubject = @"City";
+    
+    self.photo9 = [[Photo alloc] init];
+    self.photo9.imageName = @"paris.jpg";
+    self.photo9.imageLocation = @"Foreign";
+    self.photo9.imageSubject = @"City";
+    
+    self.photo10 = [[Photo alloc] init];
+    self.photo10.imageName = @"rio.jpg";
+    self.photo10.imageLocation = @"Foreign";
+    self.photo10.imageSubject = @"City";
+    
+    self.imagesArray = @[self.photo1,self.photo2,self.photo3,self.photo4,self.photo5,self.photo6,self.photo7,self.photo8,self.photo9,self.photo10];
+    
+    self.sortKey = @"Subject";
     
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     
+    self.tempArray1 = [[NSArray alloc] init];
+    self.tempArray2 = [[NSArray alloc] init];
     
-
+    [self setTempArrays];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    
-    return 2;
-    
-}
-
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.imagesArray count];
+    if (section == 0) {
+
+        return [self.tempArray1 count];
+    }
+    else if (section == 1) {
+
+        return [self.tempArray2 count];
+    }
+    return 0;
 }
 
 
-
-- (UICollectionViewCell *) collectionView: (UICollectionView *) collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+-(void) setTempArrays {
     
-    //this is where you set what is inside each cell
+    NSMutableArray* tempArray_1 = [[NSMutableArray alloc] init];
+    NSMutableArray* tempArray_2 = [[NSMutableArray alloc] init];
     
-    self.myCell = [[CollectionViewCell alloc] init];
-    self.myCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    if ([self.sortKey isEqualToString:@"Location"]) {
+        for (Photo *photo in self.imagesArray) {
+            if ([photo.imageLocation isEqualToString:@"Canada"]) {
+                [tempArray_1 addObject: photo];
+            } else if ([photo.imageLocation isEqualToString:@"Foreign"]) {
+                [tempArray_2 addObject: photo];
+            }
+        }
+    }
+    else if ([self.sortKey isEqualToString:@"Subject"]) {
+        for (Photo *photo in self.imagesArray) {
+            if ([photo.imageSubject isEqualToString:@"City"]) {
 
-    UIImageView* tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.myCell.frame.size.width, self.myCell.frame.size.height)];
-    tempImageView.image = [UIImage imageNamed:self.imagesArray[indexPath.row]];
+                [tempArray_1 addObject:photo];
+            } else if ([photo.imageSubject isEqualToString:@"Other"]) {
 
-    [self.myCell.contentView addSubview: tempImageView];
-    return self.myCell;
- 
-}
-
-
-- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+                
+                [tempArray_2 addObject:photo];
+            }
+        }
+    }
     
-    return CGSizeMake(185, 130);
-    //size of each cell in collection
-    //header and footer use similar method
-
-}
-
-
-- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 4;
-}
-
-- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-{
-    return 4;
+    self.tempArray1 = tempArray_1;
+    self.tempArray2 = tempArray_2;
+    
 }
 
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    if (kind == UICollectionElementKindSectionHeader) {
+    
+    UICollectionReusableView *sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+    UILabel *headerLabel1 = [[UILabel alloc] init];
+    UILabel *headerLabel2 = [[UILabel alloc] init];
+    
+    headerLabel1=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 45)];
+    headerLabel1.textColor = [UIColor whiteColor];
+    headerLabel1.backgroundColor = [UIColor darkGrayColor];
+    
+    headerLabel2=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 45)];
+    headerLabel2.textColor = [UIColor whiteColor];
+    headerLabel2.backgroundColor = [UIColor darkGrayColor];
+
+    if ([self.sortKey isEqualToString: @"Location"]) {
         
-        self.sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        if (indexPath.section == 0) {
+            NSString *title1 = @"Canada";
+            headerLabel1.text=title1;
+            [sectionHeader addSubview:headerLabel1];
+            
+        } else if (indexPath.section == 1) {
+            NSString *title2 = @"Foreign";
+            headerLabel2.text=title2;
+            [sectionHeader addSubview:headerLabel2];
+        }
         
-        self.headerLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 45)];
-        NSString *title = @"Location";
-        self.headerLabel.text=[NSString stringWithFormat: title, indexPath.section + 1];
-        self.headerLabel.textColor = [UIColor whiteColor];
-        self.headerLabel.backgroundColor = [UIColor darkGrayColor];
+    } else if ([self.sortKey isEqualToString:@"Subject"]) {
+
+        if (indexPath.section == 0) {
+            NSString *title1 = @"City";
+            headerLabel1.text=title1;
+            [sectionHeader addSubview:headerLabel1];
+            
+        } else if (indexPath.section == 1) {
+            NSString *title2 = @"Other";
+            headerLabel2.text=title2;
+            [sectionHeader addSubview:headerLabel2];
+            
+        }
+}
+
+    return sectionHeader;
+}
+
+                
+- (IBAction)sortType:(UISegmentedControl*)sender {
         
-        [self.sectionHeader addSubview:self.headerLabel];
-        return self.sectionHeader;
+    NSInteger selectedSegment = sender.selectedSegmentIndex;
+        
+    if (selectedSegment == 0) {
+        self.sortKey = @"Subject";
+    } else if (selectedSegment == 1) {
+        self.sortKey = @"Location";
+    }
+
+    
+}
+
+
+//this is where you set what is inside each cell
+- (UICollectionViewCell *) collectionView: (UICollectionView *) collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+
+    UICollectionViewCell *myCell = [[UICollectionViewCell alloc] init];
+    myCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
+    
+    UIImageView* tempImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, myCell.frame.size.width, myCell.frame.size.height)];
+    
+    Photo *tempPhoto = [[Photo alloc] init];
+
+    if (indexPath.section == 0) {
+        tempPhoto = self.tempArray1[indexPath.row];
+        tempImageView.image = [UIImage imageNamed:tempPhoto.imageName];
+        [myCell.contentView addSubview: tempImageView];
+        return myCell;
+
+    } else if (indexPath.section == 1) {
+        tempPhoto = self.tempArray2[indexPath.row];
+        tempImageView.image = [UIImage imageNamed:tempPhoto.imageName];
+        [myCell.contentView addSubview: tempImageView];
+        return myCell;
+
     }
     return nil;
 }
-
 
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
@@ -122,7 +237,33 @@
     return CGSizeMake(self.view.frame.size.width, 50);
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
 
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 2;
+}
+
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return CGSizeMake(185, 130);
+    //size of each cell in collection
+    //header and footer use similar method
+    
+}
+
+- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+
+{
+    return 1;
+}
+
+- (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+
+{
+    return 4;
+}
 
 
 @end
