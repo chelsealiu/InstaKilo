@@ -31,8 +31,9 @@
 @property (strong, nonatomic) Photo *photo9;
 @property (strong, nonatomic) Photo *photo10;
 
+@property (strong, nonatomic) NSString* sortKey;
 
-@property (strong, nonatomic) NSString* sortKey; 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *sortTypeControl;
 
 @end
 

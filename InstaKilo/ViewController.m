@@ -87,14 +87,22 @@
     
     self.imagesArray = @[self.photo1,self.photo2,self.photo3,self.photo4,self.photo5,self.photo6,self.photo7,self.photo8,self.photo9,self.photo10];
     
-    self.sortKey = @"Subject";
     
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
     
     self.tempArray1 = [[NSArray alloc] init];
     self.tempArray2 = [[NSArray alloc] init];
     
+    if ([self.sortTypeControl isEnabledForSegmentAtIndex: 0]) {
+        self.sortKey = @"Subject";
+    } else if ([self.sortTypeControl isEnabledForSegmentAtIndex: 1]) {
+        self.sortKey = @"Location";
+    } else {
+        self.sortKey = @"Subject";
+    }
+    
     [self setTempArrays];
+
 }
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -140,13 +148,13 @@
     self.tempArray1 = tempArray_1;
     self.tempArray2 = tempArray_2;
     
+ 
 }
-
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    
+
     UICollectionReusableView *sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
     UILabel *headerLabel1 = [[UILabel alloc] init];
     UILabel *headerLabel2 = [[UILabel alloc] init];
@@ -190,23 +198,9 @@
     return sectionHeader;
 }
 
-                
-- (IBAction)sortType:(UISegmentedControl*)sender {
-        
-    NSInteger selectedSegment = sender.selectedSegmentIndex;
-        
-    if (selectedSegment == 0) {
-        self.sortKey = @"Subject";
-    } else if (selectedSegment == 1) {
-        self.sortKey = @"Location";
-    }
-
-    
-}
-
-
 //this is where you set what is inside each cell
 - (UICollectionViewCell *) collectionView: (UICollectionView *) collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
 
     UICollectionViewCell *myCell = [[UICollectionViewCell alloc] init];
     myCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"Cell" forIndexPath:indexPath];
@@ -218,10 +212,13 @@
     if (indexPath.section == 0) {
         tempPhoto = self.tempArray1[indexPath.row];
         tempImageView.image = [UIImage imageNamed:tempPhoto.imageName];
+//        NSLog(@"%@", self.tempArray1);
         [myCell.contentView addSubview: tempImageView];
+
         return myCell;
 
     } else if (indexPath.section == 1) {
+
         tempPhoto = self.tempArray2[indexPath.row];
         tempImageView.image = [UIImage imageNamed:tempPhoto.imageName];
         [myCell.contentView addSubview: tempImageView];
@@ -264,6 +261,23 @@
 {
     return 4;
 }
+
+- (IBAction)sortType:(UISegmentedControl*)sender {
+    
+    NSInteger selectedSegment = sender.selectedSegmentIndex;
+    
+    if (selectedSegment == 0) {
+        self.sortKey = @"Subject";
+    } else if (selectedSegment == 1) {
+        self.sortKey = @"Location";
+    }
+    [self setTempArrays];
+
+    [self.collectionView reloadData];
+
+}
+
+
 
 
 @end
