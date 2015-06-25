@@ -17,6 +17,9 @@
 
 @property (nonatomic, strong) NSMutableArray *imagesArray;
 
+@property (retain, nonatomic) UICollectionReusableView *sectionHeader;
+
+@property (retain, nonatomic) UILabel *headerLabel;
 
 @end
 

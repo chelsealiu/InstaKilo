@@ -21,10 +21,11 @@
     [super viewDidLoad];
     
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view.backgroundColor = [UIColor darkGrayColor];
     
     //initialize UICollectionView
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.sectionInset = UIEdgeInsetsMake(20, 0, 20, 0);
+    layout.sectionInset = UIEdgeInsetsMake(20, 0, 0, 0);
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout: layout];
     [self.collectionView setDataSource:self];
     [self.collectionView setDelegate:self];
@@ -35,8 +36,9 @@
     NSArray *tempArray = @[@"toronto.png",@"vancouver.png",@"newyork.png",@"shanghai.png",@"tokyo.png",@"alaska.jpg", @"venice.jpg",@"london.jpg",@"paris.jpg",@"rio.jpg"];
     self.imagesArray = [[NSMutableArray alloc] initWithArray:tempArray];
     
-
-//    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView"];
+    
+    
 
 }
 
@@ -59,6 +61,7 @@
 
 
 - (UICollectionViewCell *) collectionView: (UICollectionView *) collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     //this is where you set what is inside each cell
     
     self.myCell = [[CollectionViewCell alloc] init];
@@ -89,16 +92,35 @@
 
 - (CGFloat) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 1;
+    return 4;
 }
 
 
 
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        self.sectionHeader = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
+        
+        self.headerLabel=[[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, 45)];
+        NSString *title = @"Location";
+        self.headerLabel.text=[NSString stringWithFormat: title, indexPath.section + 1];
+        self.headerLabel.textColor = [UIColor whiteColor];
+        self.headerLabel.backgroundColor = [UIColor darkGrayColor];
+        
+        [self.sectionHeader addSubview:self.headerLabel];
+        return self.sectionHeader;
+    }
+    return nil;
+}
 
 
 
-
-
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    
+    return CGSizeMake(self.view.frame.size.width, 50);
+}
 
 
 
